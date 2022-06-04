@@ -8,24 +8,52 @@
     <title>Blackheart Barbershop</title>
     <script src="./scripts/maps.js"></script>
     <link href="/dist/output.css" rel="stylesheet">
+    <style>
+        .map {
+          height: 400px;
+          width: 100%;
+        }
+      </style>
+      <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
 </head>
 <body>
     <header class="w-full h-3">
-        <div class="w-full pt-3 bg-slate-500 flex content-center">
-            Call to book an appointment!
+        <div class="w-full pt-3 bg-slate-500 flex items-center justify-items-center">
+            <p>Call to book an appointment!</p>
             <img src="./img/phone.svg">
         </div>
-        <img src="" class=""/>
+        <div class="w-full h-7 bg-black-500/100 relative">
+            <img src="">
+            <img src="">
+        </div>
         <nav class="invisible">
             <a src="">Services</a>
             <a src="">About Woody</a>
         </nav>
     </header>
+
     <section>
         <div class="w-full h-7 bg-black-200">
-            <h1>WELCOME TO BLKHRT</h1>
+            <h1></h1>
         </div>
     </section>
+    
+    <!-- <div id="map" class="map"></div>
+    <script type="text/javascript">
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([8, -118.82]),
+          zoom: 4
+        })
+      });
+    </script> -->
+    
     <footer class="w-full bg-black-500">
         BLKHRT
     </footer>
