@@ -1,0 +1,29 @@
+
+/* Hamburger Menu */
+.McButton {
+    @bar-w: 44px;
+    @bar-h: 3px;
+    @bar-color: white;
+    position: relative;
+    width: @bar-w;
+    height: (@bar-w *3) /4;
+    cursor: pointer;
+    display: block ruby;
+
+    b {
+      position: absolute;
+      left: 0;
+      width: @bar-w;
+      height: @bar-h;
+      background-color: @bar-color;
+      &:nth-child(1) {
+        top: 0;
+      }
+      &:nth-child(2) {
+        top: 50%;
+      }
+      &:nth-child(3) {
+        top: 100%;
+      }
+    }
+  }/* McButton */
