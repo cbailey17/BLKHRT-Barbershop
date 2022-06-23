@@ -6,28 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Blackheart Barbershop">
     <title>Blackheart Barbershop</title>
-    <script src="./scripts/maps.js"></script>
     <link href="/dist/output.css" rel="stylesheet">
     <link rel="stylesheet/less" type="text/css" href="./styles/styles.less" />
     <style>
-        .map {
-          height: 250px;
-          width: 100%;
+        #map {
+          height: 400px;
+          width: 90%;
+          margin: auto;
+          top: 20px;
           /**position: relative;
           left: calc(50% - 35vmin);**/
         }
+        #header {
+          height: 60vh;
+        }
+        #mapButton {
+          margin-right: 7px;
+        }
+        #copyright {
+          margin-top: 45px;
+          margin-bottom: 20px;
+          margin-right: 15px;
+      }
+      #copy {
+        margin-bottom: 55px;
+      }
+      #nav {
+        background-color: rgba(255,255,255,0.54);;
+      }
+      #mapDetails {
+        margin-top: 15px;
+      }
+      #directions {
+        z-index: 99;
+        top: -22rem;
+        left: 65vmin;
+      }
+      #contact {
+        background-color: black;
+        position: relative;
+        height: 55vmin;
+        width: auto;
+        border-bottom-left-radius: 30%;
+        border-bottom-right-radius: 30%;
+      }
+      #hours {
+        margin-bottom: 10px;
+      }
       </style>
-      <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/less@4" ></script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-      
 </head>
-<body>
-    <header class="w-full h-96" style="background-image: url('./img/woddyleftys-9.jpg'); background-size: 100% 100%;">
+<body class="bg-slate-800 absolute">
+    <header id="header" class="w-full h-96" style="background-image: url('./img/woddyleftys-9.jpg'); background-size: 100% 100%;">
         <div class="w-full h-7 bg-yellow-400 bg-opacity-60 text-center">
             <p class ="text-white pt-1">Call to book an appointment! <img class="w-4 h-4 inline-flex pb-1" href="tel:18587357466" src="./img/icons8-phone.svg"></p>
         </div>
-        <div class="w-full h-14 bg-black bg-opacity-25 flex justify-between items-center px-4">
+        <div id="nav" class="w-full h-14 flex justify-between items-center px-4">
           <img class="w-16 h-10" src="./img/BLKHRT_BarberShopLogo.png">
           <a class="McButton" data="hamburger-menu">
             <b></b>
@@ -50,7 +85,7 @@
         </nav>
     </header>
     <div class="bg-black h40">
-      <h1 class="text-white px-4 py-3">ABOUT US <img class="w-20 h-20" src="./img/pf2.svg"></h1>
+      <h1 class="text-white px-4 py-3">ABOUT US <img class="w-20 h-20 float-right" src="./img/pf2.svg"></h1>
       <h4 class="text-white px-4 pb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum ipsam, nostrum asperiores voluptas ad modi recusandae natus dolor, repellendus laboriosam velit aliquam amet. Reiciendis, obcaecati facere harum hic culpa exercitationem?</h4>
     </div>
 
@@ -58,38 +93,81 @@
       <h1 class="text-black font-bold text-center pt-2">SOCIALS</h1>
     </div>
 
-    <div id="map" class="map relative">
-      <button class="bg-yellow-400 text-center p-2 rounded-lg absolute z-10 text-xs left-64 top-3">
-        GET DIRECTIONS
-      </button>
+    <div class="bg-amber-800 w-full h-36">
+      <h1 class="text-black font-bold text-center pt-2">WHAT PEOPLE ARE SAYING</h1>
+      <div class="w-32 h-16"></div>
     </div>
-    <script type="text/javascript">
-      var map = new ol.Map({
-        target: 'map',
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        view: new ol.View({
-          center: ol.proj.fromLonLat([32, 32]),
-          zoom: 4
-        })
-      });
-    </script>
 
-    <div class="w-full bg-black h-20">
+    <div class="bg-yellow-400 w-full relative flex flex-col">
+      <div>
+        <img id="scissors1" class="w-10 h-10 float-left p-2" src="./img/icons8-scissors-50.png">
+        <img id="scissors2" class="w-10 h-10 float-right p-2" src="./img/icons8-scissors-50.png">
+      </div>
+      <h1 class="text-black font-bold text-center pt-2 relative">SERVICES</h1>
+      <h1 class="self-center">Haircut</h1>
+      <h1 class="self-center">Beard Trim with Cut</h1>
+      <h1 class="self-center">Life Advice</h1>
+      <div>
+        <img id="scissors3" class="w-10 h-10 float-left p-2" src="./img/icons8-scissors-50.png">
+        <img id="scissors4" class="w-10 h-10 float-right p-2" src="./img/icons8-scissors-50.png">
+      </div>
+    </div>
+
+
+    <div class="bg-black relative">
+      <!-- <div id="map" class="map relative top-6"> -->
+        <div id="map" class="mx-auto top-8 relative">
+          <iframe class=""
+            width=100%
+            height="400"
+            frameborder="0" style="border:0"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBpvPj658khiER_se2HT21-QoDcuayH4UQ&q=BLKHRT"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="relative top-0 left-0">
+          <button href='https://maps.google.com/?q=BLKHRT' id="directions" class="bg-yellow-400 text-center p-2 absolute top-0 right-0 rounded-lg z-6 text-xs flex">
+            <img id="mapButton" class="w-3 h-3 self-center" src="./img/airplane.png">
+            <p>DIRECTIONS</p>
+          </button>
+        </div>
+      <div class="mt-10">
+        <h1 id="mapDetails" class="mt-10">Grand Avenue</h1>
+      </div>
+    </div>
+
+
+    <div id="contact" class="w-full bg-black h-96 relative">
         <div class="text-yellow-400 font-bold text-xl center text-center p-2">
-          Contact Us
+          Come Find Us
+        </div>
+        <p class="text-white text-center">1952 Balboa Ave, San Diego, CA 92109</p>
+        <div id="hours" class="text-white text-center relative top-6">
+          <h1 class="font-bold text-yellow-400"> HOURS</h1>
+          <h4>MON - FRI: 11AM - 7PM</h4>
+          <h4>SAT: 11AM - 4PM</h4>
+          <h4>SUN: CLOSED</h4>
         </div>
     </div>
-    <footer class="w-full h-36 bg-slate-600">
 
-      <img class="w-12 h-12" src="./img/icons8-yelp.svg">
-      <h6>Copyright</h6>
+    <footer class="w-full bg-slate-800 flex flex-col">
+      <div class="flex self-center">
+        <img id="copyright" class="my-10 w-8 h-8 self-center" src="./img/icons8-yelp.svg">
+        <img id="copyright" class="my-10 w-10 h-10 self-center bg-white" src="./img/instag.png">
+      </div>
+      <h6  id="copy" class="text-white text-center">Copyright &copy; 2022 BLKHRT - All Rights Reserved.</h6>
     </footer>
+
     <script src="./scripts/animations.js"></script>
+    <script src="./scripts/maps.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js"></script> -->
+    <script>
+      $('#scissors1').velocity({  rotateZ: "+=360" }, { duration: 1000, easing: "linear", loop: false});
+      $('#scissors2').velocity({  rotateZ: "+=360" }, { duration: 500, easing: "linear", loop: true});
+      $('#scissors3').velocity({  rotateZ: "+=360" }, { duration: 500, easing: "linear", loop: true});
+      $('#scissors4').velocity({  rotateZ: "+=360" }, { duration: 500, easing: "linear", loop: true});
+    </script>
 </body>
 </html>
