@@ -9,6 +9,9 @@
     <link href="/dist/output.css" rel="stylesheet">
     <link rel="stylesheet/less" type="text/css" href="./styles/styles.less" />
     <style>
+      body {
+        overflow-x: hidden;
+      }
         #map {
           height: 400px;
           width: 90%;
@@ -17,8 +20,12 @@
           /**position: relative;
           left: calc(50% - 35vmin);**/
         }
-        #header {
-          height: 60vh;
+        #menu.active {
+          width: 100%;
+          height: 100vh;
+          display: block !important;
+          z-index: 999 !important;
+          position: relative;
         }
         #mapButton {
           margin-right: 7px;
@@ -53,14 +60,40 @@
       #hours {
         margin-bottom: 10px;
       }
+      #darken {
+        background-image: 
+        linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+        ),
+        url(./img/pb.jpg);
+      }
+      #reviews {
+        background: white;
+        width: 18rem;
+      }
       </style>
       <script src="https://cdn.jsdelivr.net/npm/less@4" ></script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="./scripts/google-places.js "></script>
+      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDXKh06NfeJiU4guo1jQK6S-yc0nb39IHk"></script>
+      <script>
+        jQuery(document).ready(function() {
+            $("#google-reviews").googlePlaces({
+                placeId: 'ChIJ_zZGyscB3IARHAptQnrO_68',
+                render: ['reviews'],
+                min_rating: 5,
+                max_rows: 0
+            });
+        });
+    </script>
 </head>
+
 <body class="bg-slate-800 absolute">
-    <header id="header" class="w-full h-96" style="background-image: url('./img/woddyleftys-9.jpg'); background-size: 100% 100%;">
+    <header id="header" class="h-96" style="background-image: url('./img/woddyleftys-9.jpg'); background-size: 100% 100%;">
         <div class="w-full h-7 bg-yellow-400 bg-opacity-60 text-center">
-            <p class ="text-white pt-1">Call to book an appointment! <img class="w-4 h-4 inline-flex pb-1" href="tel:18587357466" src="./img/icons8-phone.svg"></p>
+            <p class ="text-black pt-1">Call to book an appointment! <img class="w-4 h-4 inline-flex pb-1" href="tel:18587357466" src="./img/icons8-phone.svg"></p>
         </div>
         <div id="nav" class="w-full h-14 flex justify-between items-center px-4">
           <img class="w-16 h-10" src="./img/BLKHRT_BarberShopLogo.png">
@@ -69,6 +102,18 @@
             <b></b>
             <b></b>
           </a>
+        </div>
+        <div id="menu" style="display: none;" class="h-full w-full bg-black">
+          <span class="text-white">
+            <h1>HOME</h1>
+            <h1>ABOUT US</h1>
+            <h1>SOCIALS</h1>
+            <h1>REVIEWS</h1>
+            <h1>FIND US</h1>
+            <button class="bg-yellow-400 text-center p-2 rounded-lg absolute z-10 text-xs top-80 w-48 hover:bg-slate-400">
+              BOOK NOW
+            </button>
+          </span>
         </div>
         <div>
           <h1 class="text-white font-bold relative text-center text-3xl top-20">WOODYS BARBERSHOP</h1>
@@ -86,27 +131,31 @@
     </header>
     <div class="bg-black h40">
       <h1 class="text-white px-4 py-3">ABOUT US <img class="w-20 h-20 float-right" src="./img/pf2.svg"></h1>
-      <h4 class="text-white px-4 pb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum ipsam, nostrum asperiores voluptas ad modi recusandae natus dolor, repellendus laboriosam velit aliquam amet. Reiciendis, obcaecati facere harum hic culpa exercitationem?</h4>
+      <h4 class="text-white px-4 pb-5">The BLKHRT Barbershop is a classic style mens Barbershop with a local beach feel. We specialize in mens haircuts and hot towel straight razor shaves. Appointments are how we schedule customers so that you can get in and out and not have to wait if there are a few customers in front of you. Same or next day spots are available. Feel free to call or text anytime and come by and check out our shop.</h4>
     </div>
 
     <div class="bg-yellow-400 w-full h-36">
       <h1 class="text-black font-bold text-center pt-2">SOCIALS</h1>
     </div>
 
-    <div class="bg-amber-800 w-full h-36">
-      <h1 class="text-black font-bold text-center pt-2">WHAT PEOPLE ARE SAYING</h1>
-      <div class="w-32 h-16"></div>
+    <div class="bg-amber-800 w-full h-36 relative">
+      <h1 class="text-white font-bold text-center pt-2">WHAT PEOPLE ARE SAYING</h1>
+      <div id="reviews" class="bg-black h-14 relative top-3 flex m-auto">
+        <img class="w-10 self-center" src="./img/icons8-google-48.png">
+      </div>
     </div>
 
-    <div class="bg-yellow-400 w-full relative flex flex-col">
+    <div id="google-reviews"></div>
+
+    <div id="darken" class="bg-yellow-400 w-full relative flex flex-col" style="background-size: 100% 100%;">
       <div>
         <img id="scissors1" class="w-10 h-10 float-left p-2" src="./img/icons8-scissors-50.png">
         <img id="scissors2" class="w-10 h-10 float-right p-2" src="./img/icons8-scissors-50.png">
       </div>
-      <h1 class="text-black font-bold text-center pt-2 relative">SERVICES</h1>
-      <h1 class="self-center">Haircut</h1>
-      <h1 class="self-center">Beard Trim with Cut</h1>
-      <h1 class="self-center">Life Advice</h1>
+      <h1 class="text-yellow-400 font-bold text-center pt-2 relative">SERVICES</h1>
+      <h1 class="self-center text-white">Haircut ... 35</h1>
+      <h1 class="self-center text-white">Beard Trim with Cut ... 45</h1>
+      <h1 class="self-center text-white">Life Advice and Cold Beer ... Free</h1>
       <div>
         <img id="scissors3" class="w-10 h-10 float-left p-2" src="./img/icons8-scissors-50.png">
         <img id="scissors4" class="w-10 h-10 float-right p-2" src="./img/icons8-scissors-50.png">
@@ -164,10 +213,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js"></script> -->
     <script>
-      $('#scissors1').velocity({  rotateZ: "+=360" }, { duration: 1000, easing: "linear", loop: false});
-      $('#scissors2').velocity({  rotateZ: "+=360" }, { duration: 500, easing: "linear", loop: true});
-      $('#scissors3').velocity({  rotateZ: "+=360" }, { duration: 500, easing: "linear", loop: true});
-      $('#scissors4').velocity({  rotateZ: "+=360" }, { duration: 500, easing: "linear", loop: true});
+      $('#scissors1').velocity({  rotateZ: "-=360" }, { duration: 1000, easing: "linear", loop: true});
+      $('#scissors2').velocity({  rotateZ: "-=360" }, { duration: 1000, easing: "linear", loop: true});
+      $('#scissors3').velocity({  rotateZ: "-=360" }, { duration: 1000, easing: "linear", loop: true});
+      $('#scissors4').velocity({  rotateZ: "-=360" }, { duration: 1000, easing: "linear", loop: true});
     </script>
 </body>
 </html>

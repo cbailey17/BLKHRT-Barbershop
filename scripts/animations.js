@@ -19,6 +19,9 @@ McButton.click( function() {
           .velocity({ top: "100%" }, {duration: 200, easing: "swing"});
     McBar1.velocity("reverse", {delay: 800});
   }
+
+  document.getElementById('menu').classList.toggle('active');
+
 });
 
 
